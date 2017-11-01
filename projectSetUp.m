@@ -1,6 +1,7 @@
 %% Deblurring an Image
 % By Gloria Diederich, Alyson Grassi, and Molina Nichols
 
+% Adding this to see if the changes appropriately get committed. 
 
 %% Deblurring Using Blind Convolution Algorithm: Proof of Concept
 
