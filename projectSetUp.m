@@ -47,4 +47,19 @@ imshow(j2);
 title('Deblurring with Oversized PSF');
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Improving using Weights
+% https://www.mathworks.com/help/images/ref/deconvblind.html?s_tid=srchtitle
 
+WT = zeros(size(blurredImage));
+WT(5:end-4,5:end-4) = 1;
+INITPSF = ones(size(psf));
+
+figure(); 
+imshow(WT); 
+title('Weight array');
+
+[J , P] = deconvblind(blurredImage,INITPSF,50,[],WT);
+
+figure();
+imshow(J);
