@@ -39,8 +39,8 @@ title('Deblurring with Oversized PSF');
 
 %% Better method
 
-WEIGHT = edge(blurred(:,:,1),'sobel',.05); % change the last input number. 
-se = strel('disk',2);
+WEIGHT = edge(blurred(:,:,1),'sobel',.01); % change the last input number. 
+se = strel('disk',1);
 WEIGHT = 1-double(imdilate(WEIGHT,se));
 WEIGHT([1:3 end-(0:2)],:) = 0;
 WEIGHT(:,[1:3 end-(0:2)]) = 0;
@@ -49,7 +49,7 @@ figure; imshow(WEIGHT); title('Weight array');
 
 INITPSF = ones(size(psf));
 
-[J, P] = deconvblind(blurred(:,:,1),INITPSF,30,[],WEIGHT);
+[J, P] = deconvblind(blurred(:,:,1),INITPSF,20,[],WEIGHT);
 
 figure();
 imshow(J);
